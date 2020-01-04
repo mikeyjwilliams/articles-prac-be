@@ -5,16 +5,18 @@ const cors = require('cors');
 const usersRouter = require('./API/users/usersRouter');
 
 const server = express();
-
-server.use(cors());
 server.use(helmet());
+server.use(cors());
+
 server.use(express.json());
+
+
+
+server.use('/users', usersRouter);
 
 server.use('/', (req, res) => {
     res.send('Api is up and running');
 })
-
-server.use('/users', usersRouter);
 
 module.exports = server;
 
