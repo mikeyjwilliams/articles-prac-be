@@ -46,6 +46,10 @@ router.post('/', async (req, res) => {
     }
 })
 
+/**
+ * DELETE
+ * endpoint: `/users/:id`
+ */
 router.delete('/:id', async (req, res) => {
     try {
         const id = req.params.id;
