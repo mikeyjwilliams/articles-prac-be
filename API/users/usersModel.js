@@ -22,5 +22,10 @@ async function addUser(user) {
 
 function remove(id) {
     return db('users').where({ user_id: id }).del()
+}
 
+async function update(id, user) {
+    await db('users').where({ user_id: id }).update(user);
+
+    return findByID(id);
 }
