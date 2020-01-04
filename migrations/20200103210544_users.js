@@ -1,5 +1,5 @@
 
-exports.up = function (knex) {
+exports.up = async function (knex) {
   return knex.schema.createTable('users', table => {
     table.increments('user_id');
     table.string('email', 65).notNull().unique();
@@ -8,6 +8,6 @@ exports.up = function (knex) {
   })
 };
 
-exports.down = function (knex) {
+exports.down = async function (knex) {
   return knex.schema.dropTableIfExists('users');
 };
