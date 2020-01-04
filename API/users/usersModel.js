@@ -11,7 +11,7 @@ module.exports = {
 
 function locate(query = {}) {
     const { sortby = 'user_id', sortdir = 'asc' } = query;
-    return db('users').orderBy(sortby, sortdir).select('email', 'text', 'created_at', 'updated_at', 'user_id');
+    return db('users').orderBy(sortby, sortdir).select('username', 'created_at', 'updated_at', 'user_id');
 
 }
 
