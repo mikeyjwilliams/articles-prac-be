@@ -1,16 +1,18 @@
 const db = require('../../data/dbConfig');
 
 module.exports = {
-  findAll,
-  findById,
+  findAllCategory,
+  findCategoryById,
   addCategory,
+  updateCategory,
+  removeCategory,
 };
 
-function findAll() {
+function findAllCategory() {
   return db('categories').select('categories');
 }
 
-function findById(id) {
+function findCategoryById(id) {
   return db('categories')
     .where({ category_id: id })
     .select('category');
@@ -19,5 +21,19 @@ function findById(id) {
 async function addCategory(category) {
   const [id] = await db('categories').insert(category);
 
-  return findById(id);
+  return findCategoryById(id);
+}
+
+async function updateCategory(id, category) {
+  await db('categories')
+    .where({ category_id: id })
+    .update(category);
+
+  return findCategoryById(id);
+}
+
+function removeCategory(id) {
+  return db('categories')
+    .where({ category_id: id })
+    .del();
 }
