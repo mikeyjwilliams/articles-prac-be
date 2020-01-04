@@ -20,3 +20,7 @@ async function addUser(user) {
     return findByID(id);
 }
 
+function remove(id) {
+    return db('users').where({ user_id: id }).del()
+
+}
