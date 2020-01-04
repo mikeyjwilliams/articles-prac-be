@@ -1,20 +1,20 @@
 const db = require('../../data/dbConfig');
 
 module.exports = {
-  findAllCategory,
+  findAllCategories,
   findCategoryById,
   addCategory,
   updateCategory,
   removeCategory,
 };
 
-function findAllCategory() {
+function findAllCategories() {
   return db('categories').select('categories');
 }
 
-function findCategoryById(id) {
+function findCategoryById(catId) {
   return db('categories')
-    .where({ category_id: id })
+    .where({ category_id: catId })
     .select('category');
 }
 
