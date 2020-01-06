@@ -1,6 +1,6 @@
-exports.seed = async function(knex) {
+exports.seed = function(knex) {
   // Deletes ALL existing entries
-  knex('users')
+  return knex('users')
     .truncate()
     .then(() => {
       return knex('users').insert([
