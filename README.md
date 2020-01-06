@@ -1,4 +1,4 @@
-# articles-prac-be
+# Article Practice BackEnd
 
 ---
 
@@ -26,5 +26,29 @@
 - `content` -> text required.
 - `timestamps` -> created not used in app as of now.
 - `category_id` -> integer required -> references category table - category id.
+
+---
+
+## Users
+
+1. `GET` -> ENDPOINT `/users` uses `dbUser.locate()`
+   `if` user returns `users`
+   `else` 400 error 'none to display.'
+   `else if` server error.
+   displays: all `username` with `user_id`, `created_at`, `updated_at`
+
+1. `POST` => ENDPOINT `/users` uses `dbUser.addUser(data)`
+   ! requires -> body.username
+   ! requires -> body.password
+   `if` data passed in `201` success
+   `else` server error `500` fail.
+   displays: `user_id`, `username`, `created_at`, `updated_at`
+
+1. `DELETE` => ENDPOINT `/users/:id` uses `dbUser.remove(id)`
+   ! requires => params.id
+   `if` no params.id `400` error.
+   `else` removes user displays -> how many users were removed. (should be 1).
+
+1. **note** cannot update user names.
 
 ---
