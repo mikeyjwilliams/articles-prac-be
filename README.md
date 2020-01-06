@@ -2,6 +2,17 @@
 
 ---
 
+TOC:
+
+- users table
+- categories table
+- articles table
+- users endpoints
+
+- seeds:
+  - user seeds
+  - category seeds
+
 ## Users table
 
 - `user_id` -> primary key, increments when user is created
@@ -37,7 +48,7 @@
    `else if` server error.
    displays: all `username` with `user_id`, `created_at`, `updated_at`
 
-1. `POST` => ENDPOINT `/users` uses `dbUser.addUser(data)`
+1. `PUT` => ENDPOINT `/users` uses `dbUser.addUser(data)`
    ! requires -> body.username
    ! requires -> body.password
    `if` data passed in `201` success
@@ -52,3 +63,18 @@
 1. **note** cannot update user names.
 
 ---
+
+## Seeds
+
+the seed files are prebuilt data, for quicker testing and building out of the application and testing.
+to get seeds run `npx knex seed:run`
+
+### User Seeds
+
+The user table comes with 3 pre built seeds ready for use.
+they can be found at `seeds/001_users.js`
+
+### Category Seeds
+
+The categories table comes with 5 prebuilt seeds ready for use.
+they can be found at `seeds/002_categories.js`
