@@ -46,3 +46,5 @@ router.post('/', async (req, res) => {
       .json({ errorMessage: 'server error Posting new category.' });
   }
 });
+
+module.exports = router;
