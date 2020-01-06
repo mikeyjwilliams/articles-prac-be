@@ -28,7 +28,7 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
   try {
     if (!req.body.category) {
-      res.status(400).json({ message: 'please enter a category.' });
+      res.status(400).json({ message: 'please enter a unique category.' });
     }
     const cat = {
       category: req.body.category,
@@ -44,6 +44,28 @@ router.post('/', async (req, res) => {
     res
       .status(500)
       .json({ errorMessage: 'server error Posting new category.' });
+  }
+});
+
+router.update('/:id', async (req, res) => {
+  if (!req.body.category) {
+    res.status(400).json({ message: 'need unique category name for update.' });
+  }
+  const cat = {
+    category: req.body.category,
+  };
+  try {
+    const updatedCategory = await dbCategory.updateCategory(cat);
+    if (updatedCategory) {
+      res.status(200).json(updatedCategory);
+    } else {
+      res.status(400).json({ message: 'could not update category' });
+    }
+  } catch (err) {
+    console.log(err);
+    res
+      .status(500)
+      .json({ errorMessage: 'server error, while updating category.' });
   }
 });
 
