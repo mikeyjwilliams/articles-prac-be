@@ -21,6 +21,10 @@ router.get('/', async (req, res) => {
   }
 });
 
+/**
+ * POST
+ * endpoint: `/category/`
+ */
 router.post('/', async (req, res) => {
   try {
     if (!req.body.category) {
