@@ -47,15 +47,19 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.update('/:id', async (req, res) => {
+router.put('/:id', async (req, res) => {
+  if (!req.params.id) {
+    res.status(400).json({ message: 'cannot find category id' });
+  }
   if (!req.body.category) {
     res.status(400).json({ message: 'need unique category name for update.' });
   }
+  const id = req.params.id;
   const cat = {
     category: req.body.category,
   };
   try {
-    const updatedCategory = await dbCategory.updateCategory(cat);
+    const updatedCategory = await dbCategory.updateCategory(id, cat);
     if (updatedCategory) {
       res.status(200).json(updatedCategory);
     } else {
