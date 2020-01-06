@@ -15,7 +15,7 @@ function findAllCategories() {
 function findCategoryById(catId) {
   return db('categories')
     .where({ category_id: catId })
-    .select('category')
+    .select('category', 'category_id')
     .first();
 }
 
