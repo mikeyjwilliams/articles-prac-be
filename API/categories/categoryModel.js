@@ -9,7 +9,7 @@ module.exports = {
 };
 
 function findAllCategories() {
-  return db('categories').select('categories');
+  return db('categories').select('category_id', 'category');
 }
 
 function findCategoryById(catId) {
